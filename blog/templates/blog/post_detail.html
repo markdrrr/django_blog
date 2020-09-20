@@ -1,0 +1,52 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+<div class="post">
+    {% if post.published_date %}
+    <div class="date">
+        {{ post.published_date }}
+    </div>
+    {% endif %}
+    {% if post.draft == True %}
+     <a class="btn btn-default" href="{% url 'post_publish' pk=post.pk %}">Publish</a>
+    {% endif %}
+
+
+    <p> Autor: {{ post.author }} </p>
+
+    {% if user.is_authenticated and user == post.author  %}
+    <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span
+            class="glyphicon glyphicon-pencil"> Edit </span></a>
+    <a class="btn btn-default" href="{% url 'post_remove' pk=post.pk %}"><span
+            class="glyphicon glyphicon-remove"> Delete </span></a>
+    {% endif %}
+    <h2>{{ post.title }}</h2>
+    <p>{{ post.text|linebreaksbr }}</p>
+</div>
+<div class="comment" >
+    <h4> <a href="{% url 'post_comment' pk=post.pk %}" >Comments:</a>  </h4>
+    {% for comment in comments %}
+    <div class="post">
+        <div class="date">
+            {% if user.is_authenticated and user == comment.post.author %}
+                <a href="{% url 'comment_edit' pk_comment=comment.pk %}"> Edit </a>
+                <a href="{% url 'comment_remove' pk_comment=comment.pk %}"> Delete </a>
+            {% elif user.is_authenticated and user == comment.author %}
+                <a href="{% url 'comment_edit' pk_comment=comment.pk %}"> Edit </a>
+                <a href="{% url 'comment_remove' pk_comment=comment.pk %}"> Delete </a>
+            {% endif %}
+            <p> Autor comment: {{ comment.author }} </p>
+            {{ comment.date }}
+            {{ comment.author }}
+        </div>
+        <p>{{ comment.text|linebreaksbr }}</p>
+    </div>
+    {% endfor %}
+    {% if user.is_authenticated %}
+        <h1>New comment</h1>
+        <form method="POST" class="post-form">{% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="save btn btn-default">Save</button>
+        </form>
+    {% endif %}
+</div>
+{% endblock %}
