@@ -19,7 +19,7 @@
     <a class="btn btn-default" href="{% url 'post_remove' pk=post.pk %}"><span
             class="glyphicon glyphicon-remove"> Delete </span></a>
     {% endif %}
-    <h2>{{ post.title }}</h2>
+    <h1>{{ post.title }}</h1>
     <p>{{ post.text|linebreaksbr }}</p>
 </div>
 <div class="comment" >
