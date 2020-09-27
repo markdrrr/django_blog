@@ -13,6 +13,8 @@ urlpatterns = [
     path('post/<int:pk>/comment', views.post_comment, name='post_comment'),
     path('post/<int:pk_comment>/comment_remove', views.comment_remove, name='comment_remove'),
     path('post/<int:pk_comment>/comment_edit', views.comment_edit, name='comment_edit'),
+    path('categorie/<int:pk>/', views.post_categorie, name='post_categorie'),
+    path('tag/<name>/', views.post_tag, name='post_tag'),
 
 
 ]

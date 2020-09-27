@@ -2,10 +2,6 @@
 
 
 {% block content %}
-{% for categorie in categories %}
-<a href="{% url 'post_categorie' pk=categorie.pk %}">{{categorie}}</a>
-{% endfor %}
-
 <div class="content container">
     <div class="row">
         <div class="col-md-8">
