@@ -1,8 +1,9 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-    {{ product.name }}
-    {{ product.raiting }}
-    {{ product.price }}
-    {{ product.descriptions }}
+<p>Название {{product.name}} </p>
+<p> Цена{{product.price}}</p>
+<p> Описание {{product.descriptions}}</p>
+<p> Рейтинг {{product.raiting}}</p>
+<p>Просмотры {{product.views}}</p>
 {% endblock %}
