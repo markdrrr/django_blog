@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog',
     'mptt',
-    'product'
+    'product',
+    'cart'
 ]
 
 MIDDLEWARE = [
@@ -119,3 +120,6 @@ USE_TZ = True
 LOGIN_REDIRECT_URL = '/'
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'product/product_images')
+MEDIA_URL = '/product/'
+CART_SESSION_ID = 'cart'

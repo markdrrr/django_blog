@@ -6,4 +6,8 @@
 <p> Описание {{product.descriptions}}</p>
 <p> Рейтинг {{product.raiting}}</p>
 <p>Просмотры {{product.views}}</p>
+
+{% for img in product.image_set.all %}
+<img src="{{ img.Image.url }}" alt="" width="350" height="350" class="mr-3">
+{% endfor %}
 {% endblock %}
